@@ -61,7 +61,8 @@ Due to this, I believe that this system would be better described as a `CostCalc
 a `Checkout`.
 
 That being said, I understand that describing it as a `CostCalculator` sheds responsibility of individually
-scanning/adding items into the system. Though I believe this is a fair compromise to keep the context well-defined and the interface simple.
+scanning/adding items into the system. Though I believe this is a fair compromise to keep the context well-defined and
+the interface simple.
 
 After completing the single purpose of the system, I will look to add in the extra functionality of the different
 discounts as defined (BOGOF and BulkPurchases)
@@ -69,7 +70,7 @@ discounts as defined (BOGOF and BulkPurchases)
 #### ✅ Checklist
 
 - [x] ✨ Add `CostCalculator` which returns total given a list of items
-- [ ] ♻️ Refactor `CostCalculator` for flexibility
+- [x] ♻️ Refactor `CostCalculator` for flexibility
 - [ ] ✨ Add a `Buy One Get One Free (BOGOF) for Fruit Tea` discount mechanism
 - [ ] ♻️ Refactor `Buy One Get One Free (BOGOF)` discount mechanism for flexibility of other products
 - [ ] ✨ Add a `BulkBuy For Strawberries` discount mechanism

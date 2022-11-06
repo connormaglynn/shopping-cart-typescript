@@ -1,11 +1,7 @@
-import { Item } from './model'
+import { Items } from './items'
 
 export class CostCalculator {
-  public calculate(items: Item[]): number {
-    let total = 0
-    items.forEach((item) => {
-      total += item.price
-    })
-    return total
+  public calculate(items: Items): number {
+    return items.getTotalPrice()
   }
 }
