@@ -1,4 +1,4 @@
-import { Item } from './model'
+import { Item, ProductCode } from './model'
 
 export class Items {
   constructor(private items: Item[]) {}
@@ -9,5 +9,19 @@ export class Items {
       total += item.price
     })
     return total
+  }
+
+  filterByProductCode(productCode: ProductCode): Items {
+    return new Items(
+      this.items.filter((item) => item.productCode === productCode)
+    )
+  }
+
+  removeOneProductIfLengthIsOdd(): Items {
+    const evenNumberOfItems = new Items(this.items)
+    if (this.items.length % 2 === 1) {
+      evenNumberOfItems.items.pop()
+    }
+    return evenNumberOfItems
   }
 }

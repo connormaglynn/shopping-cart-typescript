@@ -71,7 +71,7 @@ discounts as defined (BOGOF and BulkPurchases)
 
 - [x] ✨ Add `CostCalculator` which returns total given a list of items
 - [x] ♻️ Refactor `CostCalculator` for flexibility
-- [ ] ✨ Add a `Buy One Get One Free (BOGOF) for Fruit Tea` discount mechanism
+- [x] ✨ Add a `Buy One Get One Free (BOGOF) for Fruit Tea` discount mechanism
 - [ ] ♻️ Refactor `Buy One Get One Free (BOGOF)` discount mechanism for flexibility of other products
 - [ ] ✨ Add a `BulkBuy For Strawberries` discount mechanism
 - [ ] ♻️ Refactor `BulkBuy` discount mechanism for flexibility of other products
