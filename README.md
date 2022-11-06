@@ -1,3 +1,8 @@
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)
+![ESLINT](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
+
 # shopping-cart-typescript
 
 Shopping Cart Scenario For a Senior Developer Interview. Written in Typescript.
@@ -63,7 +68,7 @@ discounts as defined (BOGOF and BulkPurchases)
 
 #### ✅ Checklist
 
-- [ ] ✨ Add `CostCalculator` which returns total given a list of items
+- [x] ✨ Add `CostCalculator` which returns total given a list of items
 - [ ] ♻️ Refactor `CostCalculator` for flexibility
 - [ ] ✨ Add a `Buy One Get One Free (BOGOF) for Fruit Tea` discount mechanism
 - [ ] ♻️ Refactor `Buy One Get One Free (BOGOF)` discount mechanism for flexibility of other products
