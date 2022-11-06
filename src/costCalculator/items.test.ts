@@ -16,7 +16,7 @@ describe('Items', () => {
     })
   })
 
-  describe('filterByProductCode()', () => {
+  describe('filterByProductCodes()', () => {
     it('should filter out all items except fruit tea', () => {
       items = new Items(allItems)
       expect(items.filterByProductCode(fruitTea.productCode)).toEqual(

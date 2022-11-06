@@ -52,7 +52,8 @@ good luck!
 
 ### 💡 Initial Ideas
 
-To complete the above task, I think it best to define a single (and simple) purpose for the application and start there.
+To complete the above task, I think it is best to define a single (and simple) purpose for the application and start
+there.
 
 From reading the task, I assume that the fundamental component of the system is to loop through a list of items and
 return the total of all prices.
@@ -72,6 +73,19 @@ discounts as defined (BOGOF and BulkPurchases)
 - [x] ✨ Add `CostCalculator` which returns total given a list of items
 - [x] ♻️ Refactor `CostCalculator` for flexibility
 - [x] ✨ Add a `Buy One Get One Free (BOGOF) for Fruit Tea` discount mechanism
-- [ ] ♻️ Refactor `Buy One Get One Free (BOGOF)` discount mechanism for flexibility of other products
+- [x] ♻️ Refactor `Buy One Get One Free (BOGOF)` discount mechanism for flexibility of other products
 - [ ] ✨ Add a `BulkBuy For Strawberries` discount mechanism
 - [ ] ♻️ Refactor `BulkBuy` discount mechanism for flexibility of other products
+
+## 🤖 Solution
+
+### 📝 Notes
+
+- ❌ No `Scanning` functionality as defined by the requirements. Though this can be easily added with a `Checkout`
+  interface that passes the `CostCalculator` all _ScannedItems_.
+- 🔐 The current implementation could be a security risk depending on the client. Since the system expects `Items`, it
+  inherently trusts that the prices are correct. To mitigate this, the interface should be made simpler and only
+  expect `ProductCodes` then building `Items` with its own internal store (or external trusted source) of the `Item` the
+  codes relate to.
+- 🐛 Currently multiple of the same discount can be reapplied if specified within the system. Presumably this behaviour
+  is undesirable.

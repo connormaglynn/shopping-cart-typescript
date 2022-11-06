@@ -2,6 +2,8 @@ import { expect } from 'expect'
 import { allItems, coffee, fruitTea, strawberries } from './__testUtils/data'
 import { CostCalculator } from './index'
 import { Items } from './items'
+import { BuyOneGetOneFree } from './discount/buyOneGetOneFree'
+import { Discounts } from './discount/discounts'
 
 describe('ShoppingCart', () => {
   let costCalculator: CostCalculator
@@ -21,6 +23,9 @@ describe('ShoppingCart', () => {
     describe('BuyOneGetOneFree (BOGOF)', () => {
       beforeEach(() => {
         costCalculator = new CostCalculator()
+        costCalculator.discounts = new Discounts([
+          new BuyOneGetOneFree(fruitTea.productCode),
+        ])
       })
       it('⭐️should apply BOGOF for two fruit teas', () => {
         expect(
@@ -38,6 +43,54 @@ describe('ShoppingCart', () => {
             strawberries.price +
             coffee.price
         )
+      })
+
+      // FIXME: 🐛 Presumably should not be able to add multiple of the same discount???
+      describe.skip('🐛 duplicate fruit teas BOGOF discount', () => {
+        beforeEach(() => {
+          costCalculator.discounts = new Discounts([
+            new BuyOneGetOneFree(fruitTea.productCode),
+            new BuyOneGetOneFree(fruitTea.productCode),
+          ])
+        })
+        it('should not duplicate application of discount', () => {
+          expect(
+            costCalculator.calculate(new Items([fruitTea, fruitTea]))
+          ).toEqual(fruitTea.price)
+        })
+      })
+
+      describe('multiple BOGOF Discounts', () => {
+        beforeEach(() => {
+          costCalculator.discounts = new Discounts([
+            new BuyOneGetOneFree(fruitTea.productCode),
+            new BuyOneGetOneFree(strawberries.productCode),
+          ])
+        })
+        it('should apply multiple BOGOF discounts for different products', () => {
+          expect(
+            costCalculator.calculate(
+              new Items([fruitTea, fruitTea, strawberries, strawberries])
+            )
+          ).toEqual(fruitTea.price + strawberries.price)
+        })
+
+        it('should ignore un-applicable products', () => {
+          expect(
+            costCalculator.calculate(
+              new Items([
+                fruitTea,
+                fruitTea,
+                strawberries,
+                strawberries,
+                coffee,
+                coffee,
+              ])
+            )
+          ).toEqual(
+            fruitTea.price + strawberries.price + coffee.price + coffee.price
+          )
+        })
       })
     })
   })

@@ -13,7 +13,7 @@ export class Items {
 
   filterByProductCode(productCode: ProductCode): Items {
     return new Items(
-      this.items.filter((item) => item.productCode === productCode)
+      this.items.filter((item) => productCode.includes(item.productCode))
     )
   }
 
